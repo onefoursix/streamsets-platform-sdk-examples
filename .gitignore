@@ -1,0 +1,13 @@
+*.pyc
+.DS_Store
+.cache
+_build
+.idea
+*.iml
+.gitreview
+.python-version
+maintain-boss.pid
+pretenders-boss.pid
+pretenders.log
+venv/*
+*.zip
