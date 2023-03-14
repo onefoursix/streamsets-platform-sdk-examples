@@ -17,7 +17,7 @@ This allows the Python scripts to avoid having <code>CRED_ID</code> and <code>CR
 
 <hr/>
 
-### [dataops-start-job.py](dataops-start-job.py)
+### [dataops-start-job.py](python/dataops-start-job.py)
 
 This example starts a Job.
 
