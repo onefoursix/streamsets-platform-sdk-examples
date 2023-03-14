@@ -13,6 +13,12 @@ Prerequisites:
    See: https://docs.streamsets.com/platform-sdk/latest/learn/installation.html
    
  - DataOps Platform API Credentials for a user with Organization Administrator role
+
+ - To avoid including API Credentials in the script, export these two environment variables 
+   prior to running the script: 
+
+        export CRED_ID=<your CRED_ID>>
+        export CRED_TOKEN=<your CRED_TOKEN>
  
 '''
 
@@ -22,9 +28,11 @@ from streamsets.sdk import ControlHub
 
 ## User Variables ##################
 
-CRED_ID = '<your-cred-id>'
+# Get CRED_ID from the environment
+CRED_ID = os.getenv('CRED_ID')
 
-CRED_TOKEN = '<your-cred-token>'
+# Get CRED_TOKEN from the environment
+CRED_TOKEN = os.getenv('CRED_TOKEN')
 
 EXPORT_BASE_DIR = '<your-export-dir>'
 
