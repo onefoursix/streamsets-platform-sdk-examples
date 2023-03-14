@@ -8,4 +8,5 @@ Examples include:
 - [dataops-restart-job.py](dataops-restart-job.py)
 - [dataops-stop-job.py](dataops-stop-job.py)
 - [dataops-start-job-template-instances.py](dataops-start-job-template-instances.py)
+- [dataops-build-pipeline-and-job.py](dataops-build-pipeline-and-job.py)
 - [dataops-backup.py](dataops-backup.py)

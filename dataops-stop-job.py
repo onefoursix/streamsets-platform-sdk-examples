@@ -50,7 +50,7 @@ sch = ControlHub(
     credential_id=CRED_ID, 
     token=CRED_TOKEN)
 
-## Get the Job
+# Get the Job
 job = None
 try:
     job = sch.jobs.get(job_id = JOB_ID)
