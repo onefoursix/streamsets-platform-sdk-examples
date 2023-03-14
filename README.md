@@ -234,9 +234,9 @@ Exporting fragment'Audit' version '1'
 
 Here is an example message for a DRAFT version of a Fragment for which the last committed version is exported instead:
 
+````
 Fragment 'S3-Origin' version '2-DRAFT' will not be exported because it is a DRAFT version.
 --> Exporting Fragment 'S3-Origin version '1' instead.
-...
 ````
 
 And here is an example message for a version 1-DRAFT of a Fragment for which nothing is exported:
