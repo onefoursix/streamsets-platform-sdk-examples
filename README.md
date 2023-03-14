@@ -189,7 +189,7 @@ Running Pipelines:
 <hr/>
 
 
-### - [dataops-promote-pipeline-version-for-job.py](dataops-promote-pipeline-version-for-job)
+### - [dataops-promote-pipeline-version-for-job.py](dataops-promote-pipeline-version-for-job.py)
 
 This example upgrades a Job to run a different version of a pipeline than a Job is currently running.  This is typically part of a CI/CD process where a new version of a pipeline is promoted to a higher environment.  If the Job is already running, the script will upgrade and then restart the Job.
 
