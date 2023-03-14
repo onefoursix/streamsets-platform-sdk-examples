@@ -58,7 +58,7 @@ $ python3 dataops-restart-job.py
 
 This example stops a Job.
 
-Set the JOB_ID within the scriptthen execute the script. You should see output like this:
+Set the JOB_ID within the script then execute the script. You should see output like this:
 ````
 $ python3 dataops-stop-job.py
 2023-03-13 21:40:29 Connecting to Control Hub
@@ -93,9 +93,9 @@ $ python3 dataops-start-job-template-instances.py
 ### - [dataops-build-pipeline-and-job.py](dataops-build-pipeline-and-job.py)
 This example programmatically builds a Pipeline and Job and publishes them to Control Hub.
 
-The script builds a tricial "Dev Data Generator to Trash" pipeline but also includes in the comments the code for a more complex JDBC to Kafka pipeline.
+The script builds a trivial "Dev Data Generator to Trash" pipeline but also includes in the comments the code for a more complex JDBC to Kafka pipeline.
 
-With the script , set the variable <code>SDC_URL</code> to the URL of an authoring SDC. For example, in my environment I have set that vairalbe like this:
+Within the script , set the variable <code>SDC_URL</code> to the URL of an authoring SDC. For example, in my environment I have set that vairalbe like this:
 
 <code>SDC_URL = 'http://10.10.10.169:18992'</code>
 
@@ -112,7 +112,7 @@ $ python3 dataops-build-pipeline-and-job.py
 
 ### - [dataops-get-job-metrics.py](dataops-get-job-metrics.py)
 
-This example retrieved metrics for a given Job.
+This example retrieves metrics for a given Job.
 
 Set the JOB_ID in the script and excecute it. Example output is:
 
@@ -155,7 +155,7 @@ This example gets metrics for all Data Collectors as well as a list of all pipel
 Execute the script and the output should look like this:
 
 ````
-% python3 dataops-get-sdc-metrics.py
+$ python3 dataops-get-sdc-metrics.py
 2023-03-13 22:01:56 Connecting to Control Hub
 ----------
 SDC URL: http://mark-ss.internal.cloudapp.net:18630
@@ -191,9 +191,9 @@ Running Pipelines:
 
 ### - [dataops-promote-pipeline-version-for-job.py](dataops-promote-pipeline-version-for-job.py)
 
-This example upgrades a Job to run a different version of a pipeline than a Job is currently running.  This is typically part of a CI/CD process where a new version of a pipeline is promoted to a higher environment.  If the Job is already running, the script will upgrade and then restart the Job.
+This example upgrades a Job to run a different version of a pipeline than the Job is currently running.  This is typically part of a CI/CD process where a new version of a pipeline is promoted to a higher environment.  If the Job is already running, the script will upgrade and then restart the Job.
 
-Within the script, set the JOB_ID and the new verison of the pipeline to upgrade the JOb to.  Here is sample output:
+Within the script, set the JOB_ID and the new version of the pipeline to upgrade the Job to.  Here is sample output:
 
 ````
 $ python3 dataops-promote-pipeline-version-for-job.py
@@ -215,10 +215,12 @@ This example exports Fragments, Pipelines, Jobs, and Job Templates.
 
 Set the variable <code>EXPORT_BASE_DIR</code> within the script and execute it.
 
-As DRAFT versions of Fragment and Pipelines are not exportable, teh script will export th elatests commit (if one exists) for Fragments and Pipelines that have DRAFT versions.
+As DRAFT versions of Fragment and Pipelines are not exportable, the script will export the latest commit (if one exists) for Fragments and Pipelines that have DRAFT versions.
+
+Sample output looks like this:
 
 ````
-~$ python3 dataops-backup.py
+$ python3 dataops-backup.py
 
 Exporting resources to /home/mark/streamsets-export
 
@@ -228,6 +230,7 @@ Exporting Fragments
 Exporting fragment'Apply XSL to XML' version '5'
 
 Exporting fragment'Audit' version '1'
+````
 
 Here is an example message for a DRAFT version of a Fragment for which the last committed version is exported instead:
 
