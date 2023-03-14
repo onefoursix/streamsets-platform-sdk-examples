@@ -9,4 +9,6 @@ Examples include:
 - [dataops-stop-job.py](dataops-stop-job.py)
 - [dataops-start-job-template-instances.py](dataops-start-job-template-instances.py)
 - [dataops-build-pipeline-and-job.py](dataops-build-pipeline-and-job.py)
+- [dataops-get-job-metrics.py](dataops-get-job-metrics.py)
+- [dataops-get-sdc-metrics.py](dataops-get-sdc-metrics.py)
 - [dataops-backup.py](dataops-backup.py)
