@@ -17,7 +17,7 @@ This allows the Python scripts to avoid having <code>CRED_ID</code> and <code>CR
 
 <hr/>
 
-### - [dataops-start-job.py](dataops-start-job.py)
+### [dataops-start-job.py](dataops-start-job.py)
 
 This example starts a Job.
 
@@ -34,7 +34,7 @@ $ python3 dataops-start-job.py
 ````
 <hr/>
 
-### - [dataops-restart-job.py](dataops-restart-job.py)
+### [dataops-restart-job.py](dataops-restart-job.py)
 
 This example restarts a Job.
 
@@ -54,7 +54,7 @@ $ python3 dataops-restart-job.py
 ````
 <hr/>
 
-### - [dataops-stop-job.py](dataops-stop-job.py)
+### [dataops-stop-job.py](dataops-stop-job.py)
 
 This example stops a Job.
 
@@ -70,7 +70,7 @@ $ python3 dataops-stop-job.py
 ````
 <hr/>
 
-### - [dataops-start-job-template-instances.py](dataops-start-job-template-instances.py)
+### [dataops-start-job-template-instances.py](dataops-start-job-template-instances.py)
 
 This example creates and starts a set of Job Template Instances.
 
@@ -90,7 +90,7 @@ $ python3 dataops-start-job-template-instances.py
 ````
 <hr/>
 
-### - [dataops-build-pipeline-and-job.py](dataops-build-pipeline-and-job.py)
+### [dataops-build-pipeline-and-job.py](dataops-build-pipeline-and-job.py)
 This example programmatically builds a Pipeline and Job and publishes them to Control Hub.
 
 The script builds a trivial "Dev Data Generator to Trash" pipeline but also includes in the comments the code for a more complex JDBC to Kafka pipeline.
@@ -110,7 +110,7 @@ $ python3 dataops-build-pipeline-and-job.py
 ````
 <hr/>
 
-### - [dataops-get-job-metrics.py](dataops-get-job-metrics.py)
+### [dataops-get-job-metrics.py](dataops-get-job-metrics.py)
 
 This example retrieves metrics for a given Job.
 
@@ -148,7 +148,7 @@ Total Error Count: 0
 ````
 <hr/>
 
-### - [dataops-get-sdc-metrics.py](dataops-get-sdc-metrics.py)
+### [dataops-get-sdc-metrics.py](dataops-get-sdc-metrics.py)
 
 This example gets metrics for all Data Collectors as well as a list of all pipelines running per SDC.  
 
@@ -189,7 +189,7 @@ Running Pipelines:
 <hr/>
 
 
-### - [dataops-promote-pipeline-version-for-job.py](dataops-promote-pipeline-version-for-job.py)
+### [dataops-promote-pipeline-version-for-job.py](dataops-promote-pipeline-version-for-job.py)
 
 This example upgrades a Job to run a different version of a pipeline than the Job is currently running.  This is typically part of a CI/CD process where a new version of a pipeline is promoted to a higher environment.  If the Job is already running, the script will upgrade and then restart the Job.
 
@@ -209,7 +209,7 @@ $ python3 dataops-promote-pipeline-version-for-job.py
 
 <hr/>
 
-### - [dataops-backup.py](dataops-backup.py)
+### [dataops-backup.py](dataops-backup.py)
 
 This example exports Fragments, Pipelines, Jobs, and Job Templates.
 
