@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-This script starts a Job on StreamSets DataOps Platform 
+This script stops a Job on StreamSets DataOps Platform 
  
 Prerequisites:
  - Python 3.6+; Python 3.9+ preferred
@@ -17,9 +17,7 @@ Prerequisites:
         export CRED_ID=<your CRED_ID>>
         export CRED_TOKEN=<your CRED_TOKEN>
 
-- Set the variable JOB_ID at the top of the script for the Job to start
-
-- Optionally, set the Job's runtime parameters
+- Set the variable JOB_ID at the top of the script for the Job to stop
  
 '''
 
@@ -30,9 +28,6 @@ from streamsets.sdk import ControlHub
 # Job to start
 JOB_ID= '<your-job-id>'
 
-# Example Runtime Parameters (optional)
-RUNTIME_PARAMETERS = {'PARAM_1': 'aaa', 'PARAM_2': 'bbb'}
-
 # Get CRED_ID from the environment
 CRED_ID = os.getenv('CRED_ID')
 
@@ -42,8 +37,8 @@ CRED_TOKEN = os.getenv('CRED_TOKEN')
 # How often to poll Control Hub for Job status
 POLLING_FREQUENCY_SECONDS = 10
 
-# How long to wait for a started Job to become active
-MAX_WAIT_SECONDS_FOR_JOB_TO_BEOME_ACTIVE = 120
+# How long to wait for a stopped Job to become inactive
+MAX_WAIT_SECONDS_FOR_JOB_TO_BEOME_INACTIVE = 5 * 60 # Five minutes
 
 # print_message method which writes a timestamp message ot the console
 def print_message(message):
@@ -69,32 +64,27 @@ job.refresh()
 job_status = job.status.status
 print_message('Job status is \'' + job_status + '\'')
 
-# Make sure Job has INACTIVE status
-if job_status != 'INACTIVE':
-    print_message('Error: Job must have status \'INACTIVE\' in order to be started')
+# Make sure Job has ACTIVE status
+if job_status != 'ACTIVE':
+    print_message('Error: Job must have status \'ACTIVE\' in order to be stopped')
     sys.exit(-1)
 
-## Set the Job's Runtime Parameters
-print_message('Setting Job parameters...')
-job.runtime_parameters = RUNTIME_PARAMETERS
-sch.update_job(job)
+## Stop the Job
+print_message('Stopping Job...')
+sch.stop_job(job)
 
-## Start the Job
-print_message('Starting Job...')
-sch.start_job(job)
-
-## Wait for the Job to become Active
+## Wait for the Job to become inactive
 job.refresh()  
 wait_seconds = 0
-while job.status.status != 'ACTIVE':
+while job.status.status != 'INACTIVE':
     job.refresh()
-    print_message('Waiting for Job to become ACTIVE...')
+    print_message('Waiting for Job to become INACTIVE...')
     sleep(POLLING_FREQUENCY_SECONDS)
     wait_seconds += POLLING_FREQUENCY_SECONDS
-    if wait_seconds > MAX_WAIT_SECONDS_FOR_JOB_TO_BEOME_ACTIVE:
+    if wait_seconds > MAX_WAIT_SECONDS_FOR_JOB_TO_BEOME_INACTIVE:
         # Exit if Job did not become ACTIVE within the specified time
-        print_message('Error: Timeout waiting for Job to become ACTIVE')
+        print_message('Error: Timeout waiting for Job to become INACTIVE')
         sys.exit(-1) 
 
-print_message('Job status is ACTIVE')
+print_message('Job status is INACTIVE')
 print_message('Done')
