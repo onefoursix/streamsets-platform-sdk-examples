@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-This script stops a Job on StreamSets DataOps Platform 
+This script gets the logs for a Job on StreamSets DataOps Platform 
  
 Prerequisites:
  - Python 3.6+; Python 3.9+ preferred
@@ -17,28 +17,22 @@ Prerequisites:
         export CRED_ID=<your CRED_ID>>
         export CRED_TOKEN=<your CRED_TOKEN>
 
-- Set the variable JOB_ID at the top of the script for the Job to stop
+- Set the variable JOB_ID at the top of the script for the Job to get metrics for
+
  
 '''
-
 
 import datetime,os,sys
 from streamsets.sdk import ControlHub
 
-# Job to start
-JOB_ID= '<your-job-id>'
+# Job to get logs for
+JOB_ID= 'dbdb9902-6cf4-45b1-91c4-a9977a2db4e6:8030c2e9-1a39-11ec-a5fe-97c8d4369386'
 
 # Get CRED_ID from the environment
 CRED_ID = os.getenv('CRED_ID')
 
 # Get CRED_TOKEN from the environment
 CRED_TOKEN = os.getenv('CRED_TOKEN')
-
-# How often to poll Control Hub for Job status
-POLLING_FREQUENCY_SECONDS = 10
-
-# How long to wait for a stopped Job to become inactive
-MAX_WAIT_SECONDS_FOR_JOB_TO_BEOME_INACTIVE = 5 * 60 # Five minutes
 
 # print_message method which writes a timestamp message ot the console
 def print_message(message):
@@ -59,32 +53,8 @@ except:
 
 print_message('Found Job with name \'' + job.job_name + '\'')
 
-## Get the Job status
+## Get the Job logs
 job.refresh()
-job_status = job.status.status
-print_message('Job status is \'' + job_status + '\'')
+print(job.get_run_logs())
 
-# Make sure Job has ACTIVE status
-if job_status != 'ACTIVE':
-    print_message('Error: Job must have status \'ACTIVE\' in order to be stopped')
-    sys.exit(-1)
-
-## Stop the Job
-print_message('Stopping Job...')
-sch.stop_job(job)
-
-## Wait for the Job to become inactive
-job.refresh()  
-wait_seconds = 0
-while job.status.status != 'INACTIVE':
-    job.refresh()
-    print_message('Waiting for Job to become INACTIVE...')
-    sleep(POLLING_FREQUENCY_SECONDS)
-    wait_seconds += POLLING_FREQUENCY_SECONDS
-    if wait_seconds > MAX_WAIT_SECONDS_FOR_JOB_TO_BEOME_INACTIVE:
-        # Exit if Job did not become ACTIVE within the specified time
-        print_message('Error: Timeout waiting for Job to become INACTIVE')
-        sys.exit(-1) 
-
-print_message('Job status is INACTIVE')
 print_message('Done')
