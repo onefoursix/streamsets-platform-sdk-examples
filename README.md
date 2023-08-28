@@ -1,4 +1,4 @@
-# streamsets-dataops-sdk-examples
+# streamsets-platform-sdk-examples
 
 This project includes examples of using [StreamSets DataOps Platform SDK for Python](https://docs.streamsets.com/platform-sdk/latest/index.html)
 
