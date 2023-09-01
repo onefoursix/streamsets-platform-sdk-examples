@@ -16,7 +16,6 @@ Prerequisites:
 
  - Set the following variable in the script:
 
-
         # Control Hub URL
         sch_url = 'https://na01.hub.streamsets.com'
 
