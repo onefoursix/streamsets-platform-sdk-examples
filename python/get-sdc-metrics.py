@@ -124,7 +124,7 @@ if not os.path.isdir(output_dir):
     sys.exit(-1)
 
 # Get the SDC URL from the command line
-sdc_url = 'http://sequoia.onefoursix.com:11111' #sys.argv[1]
+sdc_url = sys.argv[1]
 
 # Create the log file
 logger = create_rotating_log()
