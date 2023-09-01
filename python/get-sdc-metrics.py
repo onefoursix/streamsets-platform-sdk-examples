@@ -117,7 +117,7 @@ if len(sys.argv) != 2:
     print('Usage: python get-sdc-metrics.py <SDC_URL>')
     sys.exit(-1)
 
-# Confirm the logging directory exists]
+# Confirm the logging directory exists
 if not os.path.isdir(output_dir):
     print('Error: the directory \'' + output_dir + '\' does not exist')
     print('Please create that directory in advance')
