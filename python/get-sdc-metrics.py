@@ -14,7 +14,7 @@ Prerequisites:
 
  - Control Hub API Credentials
 
- - Set the following variable in the script:
+ - Set the following variables in the script:
 
         # Control Hub URL
         sch_url = 'https://na01.hub.streamsets.com'
