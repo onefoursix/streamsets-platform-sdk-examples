@@ -18,6 +18,21 @@ command from Control Hub.
 Comment out either section if you only want to update labels at the engine
 level or the deployment level.
 
+
+Set these variables in the script with your own values:
+
+    # Control Hub creds
+    cred_id = '' 
+    cred_token = '' 
+
+    # List of deployment names to update engine labels for
+    deployment_names = ['rancher-1', 'rancher-2']
+
+    # Lists of labels to add and remove
+    labels_to_add = ['new_label_1', 'new_label_2']
+    labels_to_remove = ['old_label_1', 'old_label_2']
+
+
 The script prints output to the console like this, grouping together
 the deployments and their associated engine(s):
 
@@ -47,7 +62,7 @@ deployment_names = ['rancher-1', 'rancher-2']
 
 # Lists of labels to add and remove
 labels_to_add = ['new_label_1', 'new_label_2']
-labels_to_remove = ['old_label_1', 'old_label_2', ]
+labels_to_remove = ['old_label_1', 'old_label_2']
 
 # Method that returns a deployment for a deployment name
 def get_deployment_by_name(sch, deployment_name):
