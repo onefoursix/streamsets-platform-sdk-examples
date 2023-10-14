@@ -6,7 +6,7 @@ both the engine level and the deployment level.
 
 Setting labels at the engine level makes the labels
 immediately available for running Jobs, though if an engine dies and is 
-recreated (for example on k8s) labels set at the engine level will not persist
+recreated (for example on k8s) labels set at the engine level will not persist.
 
 Setting labels at the deployment level makes the labels
 available for running Jobs only after a deployment restart, or if engines 
@@ -15,11 +15,11 @@ engine Pod on K8s and let it get recreated). Updated labels set at the deploymen
 level will not take effect if one only performs a "restart engine" 
 command from Control Hub.
 
-Comment out either section if you only want to update labels and the engine
-level or the deployment level
+Comment out either section if you only want to update labels at the engine
+level or the deployment level.
 
 The script prints output to the console like this, grouping together
-the deployments and their associated engine(s).
+the deployments and their associated engine(s):
 
  % python update-engine-labels.py
 ---
