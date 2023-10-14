@@ -21,8 +21,6 @@ level or the deployment level
 The script prints output to the console like this, grouping together
 the deployments and their associated engine(s).
 
-
-
  % python update-engine-labels.py
 ---
 Connecting to Control Hub
@@ -40,7 +38,7 @@ Done
 import os
 from streamsets.sdk import ControlHub
 
-# Get Control Hub creds from the environment
+# Control Hub creds
 cred_id = '' 
 cred_token = '' 
 
