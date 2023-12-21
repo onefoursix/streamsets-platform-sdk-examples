@@ -14,7 +14,7 @@ Set the following variables in the script:
 
 Sample output looks like this:
 
-    % python get-sdc-pipeline-metrics.py
+    $ python get-sdc-pipeline-metrics.py
     Connected to Control Hub
     Found Job 'Job for Weather Raw to Refined'
     Connected to SDC at http://localhost:18888
