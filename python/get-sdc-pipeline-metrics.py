@@ -16,10 +16,10 @@ Sample output looks like this:
 
     $ python get-sdc-pipeline-metrics.py
     Connected to SDC at http://localhost:18888
-    Found pipeline 'Weather Raw to Refined'
-    Pipeline input record count: 6683
-    Pipeline output record count: 6683
-    Time of Last Record Received: 2023-12-20 15:44:41.396000
+    Found pipeline for Job 'Weather Raw to Refined'
+    Pipeline input record count: 8482
+    Pipeline output record count: 8482
+    Time of Last Record Received: 2023-12-20 16:20:16.316000
 
 '''
 
@@ -35,8 +35,8 @@ cred_token = ''
 # SDC URL
 sdc_url = ''
 
-# Pipeline name
-pipeline_name = 'Weather Raw to Refined'
+# Job name
+job_name = ''
 
 # Set to True if WebSocket Communication is enabled
 # Set to False if Direct REST APIs are used
@@ -65,13 +65,13 @@ print('Connected to SDC at {}'.format(sdc_url))
 # Get pipeline
 pipeline = None
 try:
-    pipeline = sdc.pipelines.get(title=pipeline_name)
+    pipeline = sdc.pipelines.get(title=job_name)
 except Exception as e:
     print('Error: Could not find pipeline')
     print(str(e))
     sys.exit(-1)
 
-print('Found pipeline \'{}\''.format(pipeline_name))
+print('Found pipeline for Job \'{}\''.format(job_name))
 
 pipeline_metrics = sdc.get_pipeline_metrics(pipeline).pipeline
 
