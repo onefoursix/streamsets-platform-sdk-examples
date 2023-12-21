@@ -67,7 +67,7 @@ pipeline = None
 try:
     pipeline = sdc.pipelines.get(title=job_name)
 except Exception as e:
-    print('Error: Could not find pipeline')
+    print('Error: Could not find pipeline for Job \'{}\''.format(job_name))
     print(str(e))
     sys.exit(-1)
 
