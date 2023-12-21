@@ -34,7 +34,6 @@ from streamsets.sdk import ControlHub
 cred_id = ''
 cred_token = ''
 
-
 # SDC URL
 sdc_url = ''
 
