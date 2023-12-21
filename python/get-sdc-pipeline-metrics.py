@@ -25,7 +25,7 @@ Sample output looks like this:
 
 # Imports
 import sys
-import datetime
+from datetime import datetime
 from streamsets.sdk import ControlHub
 
 # Control Hub API credentials
@@ -83,7 +83,7 @@ print('Pipeline output record count: {}'.format(pipeline_metrics.output_record_c
 gauges = pipeline_metrics._data['gauges']
 runtime_stats_gauge = gauges['RuntimeStatsGauge.gauge']
 millis = runtime_stats_gauge['value']['timeOfLastReceivedRecord']
-time_of_last_record_received = datetime.datetime.fromtimestamp(millis/1000.0)
+time_of_last_record_received = datetime.fromtimestamp(millis/1000.0)
 print('Time of Last Record Received: {}'.format(time_of_last_record_received))
 
 
