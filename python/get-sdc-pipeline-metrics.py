@@ -48,7 +48,7 @@ try:
     sch = ControlHub(credential_id=cred_id, token=cred_token, use_websocket_tunneling=websockets_enabled)
 except Exception as e:
     print('Error: Could not connect to Control Hub.')
-    print('Exception: ' + str(e))
+    print(str(e))
     sys.exit(-1)
 
 # Connect to the Data Collector
@@ -57,7 +57,7 @@ try:
     sdc = sch.data_collectors.get(engine_url=sdc_url)._instance
 except Exception as e:
     print('Error: Could not connect to Data Collector')
-    print('Error; ' + str(e))
+    print(str(e))
     sys.exit(-1)
 
 print('Connected to SDC at {}'.format(sdc_url))
@@ -68,7 +68,7 @@ try:
     pipeline = sdc.pipelines.get(title=pipeline_name)
 except Exception as e:
     print('Error: Could not find pipeline')
-    print('Error; ' + str(e))
+    print(str(e))
     sys.exit(-1)
 
 print('Found pipeline \'{}\''.format(pipeline_name))
