@@ -14,12 +14,14 @@ Set the following variables in the script:
 
 Sample output looks like this:
 
-    $ python get-sdc-pipeline-metrics.py
+    % python get-sdc-pipeline-metrics.py
+    Connected to Control Hub
+    Found Job 'Job for Weather Raw to Refined'
     Connected to SDC at http://localhost:18888
-    Found pipeline for Job 'Weather Raw to Refined'
-    Pipeline input record count: 8482
-    Pipeline output record count: 8482
-    Time of Last Record Received: 2023-12-20 16:20:16.316000
+    Found pipeline 'Weather Raw to Refined'
+    Pipeline input record count: 1419
+    Pipeline output record count: 1419
+    Time of Last Record Received: 2023-12-21 11:08:48.629000
 
 '''
 
@@ -31,6 +33,7 @@ from streamsets.sdk import ControlHub
 # Control Hub API credentials
 cred_id = ''
 cred_token = ''
+
 
 # SDC URL
 sdc_url = ''
@@ -51,6 +54,19 @@ except Exception as e:
     print(str(e))
     sys.exit(-1)
 
+print('Connected to Control Hub')
+
+# Get the Job
+job = None
+try:
+    job = sch.jobs.get(job_name=job_name)
+except Exception as e:
+    print('Error: Could not find Job \'{}\''.format(job_name))
+    print(str(e))
+    sys.exit(-1)
+
+print('Found Job \'{}\''.format(job_name))
+
 # Connect to the Data Collector
 sdc = None
 try:
@@ -62,16 +78,25 @@ except Exception as e:
 
 print('Connected to SDC at {}'.format(sdc_url))
 
+
 # Get pipeline
 pipeline = None
 try:
-    pipeline = sdc.pipelines.get(title=job_name)
+    pipelines = sdc.pipelines
+    for p in pipelines:
+        if p.parameters['JOB_ID'] == job.job_id:
+            pipeline = p
+            print('Found pipeline \'{}\''.format(p.title))
+            break
+    if pipeline is None:
+        print('Error: Could not find pipeline for Job \'{}\''.format(job_name))
+        sys.exit(-1)
 except Exception as e:
     print('Error: Could not find pipeline for Job \'{}\''.format(job_name))
     print(str(e))
     sys.exit(-1)
 
-print('Found pipeline for Job \'{}\''.format(job_name))
+
 
 pipeline_metrics = sdc.get_pipeline_metrics(pipeline).pipeline
 
@@ -85,5 +110,3 @@ runtime_stats_gauge = gauges['RuntimeStatsGauge.gauge']
 millis = runtime_stats_gauge['value']['timeOfLastReceivedRecord']
 time_of_last_record_received = datetime.fromtimestamp(millis/1000.0)
 print('Time of Last Record Received: {}'.format(time_of_last_record_received))
-
-
