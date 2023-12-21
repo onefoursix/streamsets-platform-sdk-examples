@@ -30,7 +30,7 @@ import datetime
 from streamsets.sdk import ControlHub
 
 
-# Get Control Hub API credentials from the environment
+# Control Hub API credentials
 cred_id = ''
 cred_token = ''
 
