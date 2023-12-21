@@ -77,7 +77,6 @@ except Exception as e:
 
 print('Connected to SDC at {}'.format(sdc_url))
 
-
 # Get pipeline
 pipeline = None
 try:
@@ -94,7 +93,6 @@ except Exception as e:
     print('Error: Could not find pipeline for Job \'{}\''.format(job_name))
     print(str(e))
     sys.exit(-1)
-
 
 
 pipeline_metrics = sdc.get_pipeline_metrics(pipeline).pipeline
