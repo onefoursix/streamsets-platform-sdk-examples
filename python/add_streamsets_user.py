@@ -47,7 +47,7 @@ def invite_user_to_org(control_hub, user_email, the_org_name):
     print('Inviting user with email \'{}\' to the Org \'{}\''.format(email, the_org_name))
 
     # Create a user_builder
-    user_builder = sch.get_user_builder()
+    user_builder = control_hub.get_user_builder()
 
     # Build a user for the given email address
     user = user_builder.build(email_address=user_email)
