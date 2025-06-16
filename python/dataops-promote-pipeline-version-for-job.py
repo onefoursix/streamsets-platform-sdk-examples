@@ -60,7 +60,6 @@ print_message('Found Job with name \'' + job.job_name + '\'')
 
 
 # Get the pipeline associated with the Job
-#pipeline = sch.pipelines.get_all(pipeline_id=job.pipeline_id)[0]
 pipeline = sch.pipelines.get_all(commit_id=job.commit_id)[0]
 
 
